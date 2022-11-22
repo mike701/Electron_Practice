@@ -1,12 +1,14 @@
+import ProfileDataDisplay from "../../components/user-profile-components/ProfileDataDisplay";
+
 export default function UserProfile(props) {
-  const { setPageIndentifier } = props;
+  const { setPageIndentifier, profileData } = props;
 
   const returnToMainPage = () => {
     setPageIndentifier(1);
   };
   return (
     <>
-      <div>This is a too be user profile</div>
+      <ProfileDataDisplay profileData={profileData} />
       <button onClick={returnToMainPage}>Return to default page</button>
     </>
   );

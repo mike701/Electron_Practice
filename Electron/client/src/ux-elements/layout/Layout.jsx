@@ -9,6 +9,7 @@ export default function Layout(props) {
       <MainPage
         pageIntentifier={props.pageIntentifier}
         setPageIndentifier={props.setPageIndentifier}
+        profileData={props.profileData}
       />
       <Footer />
     </>
