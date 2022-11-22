@@ -1,3 +1,3 @@
 export default function FourOFour () {
-    return <div>404 ya need, get fucked</div>
+    return <div data-testid="error-message">404 ya nerd, get fucked</div>
 }
