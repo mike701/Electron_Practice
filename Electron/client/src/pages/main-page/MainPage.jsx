@@ -4,21 +4,20 @@ import InvalidValidIndentifierPage from "../error-message/InvalidValidIdentifier
 import UserProfile from "../user-profile/UserProfile";
 
 export default function MainPage(props) {
-  const { pageIntentifier, setPageIndentifier } = props;
-
-  if (!pageIntentifier) {
-    return <FourOFour />;
-  }
+  const { pageIntentifier, setPageIndentifier, profileData } = props;
 
   switch (pageIntentifier) {
+    case undefined | null:
+      return <FourOFour />;
     case 1:
+      return <DefaultPage setPageIndentifier={setPageIndentifier} />;
+    case 2:
       return (
-        <DefaultPage
+        <UserProfile
           setPageIndentifier={setPageIndentifier}
+          profileData={profileData}
         />
       );
-    case 2:
-        return <UserProfile setPageIndentifier={setPageIndentifier}/>
     default:
       return <InvalidValidIndentifierPage />;
   }

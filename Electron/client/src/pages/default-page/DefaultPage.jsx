@@ -11,7 +11,7 @@ export default function DefaultPage(props) {
       <button
         onClick={setPageIndentifierToTwo}
       >
-        Click to see!
+        Go to profile page
       </button>
     </>
   );
