@@ -5,17 +5,19 @@ import { useState } from "react";
 
 function App() {
   const [pageIntentifier, setPageIndentifier] = useState(1);
-  console.log(`The page intendity is currently ${pageIntentifier}`);
+  console.log(`The page intentity is currently ${pageIntentifier}`);
 
   //this would be a request to then inject the profile data into our app
   //could be handled by a store like Redux or just simple axios
-  const mockProfile = {
+  const [mockProfile, setMockProfile] = useState({
     user: "Mikey",
     name: "Mike",
     age: 2,
     description: "desc",
     hobbies: "hobbies",
-  };
+  })
+
+  
 
   return (
     <div className="App">
@@ -27,6 +29,7 @@ function App() {
               pageIntentifier={pageIntentifier}
               setPageIndentifier={setPageIndentifier}
               profileData={mockProfile}
+              setMockProfile={setMockProfile}
             />
           }
         />

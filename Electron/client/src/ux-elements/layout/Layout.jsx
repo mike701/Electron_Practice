@@ -5,11 +5,11 @@ import Footer from "../footer-nav/Footer";
 export default function Layout(props) {
   return (
     <>
-      <Nav />
+      <Nav setPageIndentifier={props.setPageIndentifier} />
       <MainPage
         pageIntentifier={props.pageIntentifier}
-        setPageIndentifier={props.setPageIndentifier}
         profileData={props.profileData}
+        setMockProfile={props.setMockProfile}
       />
       <Footer />
     </>
