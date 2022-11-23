@@ -1,0 +1,9 @@
+button{
+  border-radius: 8px;
+}
+#navBar{
+  background-color: cadetblue;
+  height: 10vh;
+  position: relative;
+  top:0vh;
+}

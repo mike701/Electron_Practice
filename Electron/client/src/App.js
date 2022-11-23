@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function App() {
   const [pageIntentifier, setPageIndentifier] = useState(1);
-  console.log(`The page intentity is currently ${pageIntentifier}`);
+  console.log(`The page entity is currently ${pageIntentifier}`);
 
   //this would be a request to then inject the profile data into our app
   //could be handled by a store like Redux or just simple axios
