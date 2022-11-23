@@ -1,5 +1,6 @@
 button{
-  border-radius: 8px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px red;;
 }
 #navBar{
   background-color: cadetblue;
