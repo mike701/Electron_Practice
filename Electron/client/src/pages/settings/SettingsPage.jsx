@@ -15,7 +15,8 @@ export default function SettingsPage(props) {
   };
 
   const setValuesToBeChanged = (event) => {
-    mockProfileDataToChange[`${event.target.id}`] = event.target.value;
+    const { id, value } = event.target;
+    mockProfileDataToChange[`${id}`] = value;
   };
 
   return (
