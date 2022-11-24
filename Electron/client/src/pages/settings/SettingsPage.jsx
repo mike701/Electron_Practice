@@ -6,7 +6,7 @@ export default function SettingsPage(props) {
     name: "Mike",
     age: 2,
     description: "desc",
-    hobbies: "hobbies",
+    hobbies: ["hobbies", "Running", "Reading"],
   };
 
   const submitForm = (event) => {

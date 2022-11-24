@@ -1,11 +1,20 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./ux-elements/layout/Layout";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 
 function App() {
-  const [pageIntentifier, setPageIndentifier] = useState(1);
-  console.log(`The page entity is currently ${pageIntentifier}`);
+  let pageId = 1;
+  if (window.localStorage.getItem('pageId') !== null) {
+    pageId = window.localStorage.getItem('pageId');
+  } else {
+    window.localStorage.setItem('pageId', pageId);
+  }
+  const [pageIdentifier, setPageIdentifier] = useState(pageId);
+  useEffect(() => {
+    window.localStorage.setItem('pageId', pageIdentifier);
+  })
+  console.log(`The page entity is currently ${pageIdentifier}`);
 
   //this would be a request to then inject the profile data into our app
   //could be handled by a store like Redux or just simple axios
@@ -14,7 +23,7 @@ function App() {
     name: "Mike",
     age: 2,
     description: "desc",
-    hobbies: "hobbies",
+    hobbies: ["Hobbies", "Running", "Reading"],
   })
 
   
@@ -26,8 +35,8 @@ function App() {
           path="/"
           element={
             <Layout
-              pageIntentifier={pageIntentifier}
-              setPageIndentifier={setPageIndentifier}
+              pageIdentifier={pageIdentifier}
+              setPageIdentifier={setPageIdentifier}
               profileData={mockProfile}
               setMockProfile={setMockProfile}
             />

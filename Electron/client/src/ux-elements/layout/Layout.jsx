@@ -5,9 +5,9 @@ import "./Layout.css"
 export default function Layout(props) {
   return (
     <div id="main">
-      <Nav setPageIndentifier={props.setPageIndentifier} />
+      <Nav setPageIdentifier={props.setPageIdentifier} />
       <MainPage
-        pageIntentifier={props.pageIntentifier}
+        pageIdentifier={props.pageIdentifier}
         profileData={props.profileData}
         setMockProfile={props.setMockProfile}
       />
