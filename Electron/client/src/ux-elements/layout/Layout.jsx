@@ -1,17 +1,17 @@
 import MainPage from "../../pages/main-page/MainPage";
 import Nav from "../footer-nav/Nav";
 import Footer from "../footer-nav/Footer";
-
+import "./Layout.css"
 export default function Layout(props) {
   return (
-    <>
-      <Nav setPageIndentifier={props.setPageIndentifier} />
+    <div id="main">
+      <Nav setPageIdentifier={props.setPageIdentifier} />
       <MainPage
-        pageIntentifier={props.pageIntentifier}
+        pageIdentifier={props.pageIdentifier}
         profileData={props.profileData}
         setMockProfile={props.setMockProfile}
       />
       <Footer />
-    </>
+    </div>
   );
 }

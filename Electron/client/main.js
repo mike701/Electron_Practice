@@ -16,7 +16,7 @@ const createWindow = () => {
   // win.loadFile('./public/index.html');
   win.loadURL("http://localhost:3000");
   
-  // win.webContents.openDevTools({ mode: 'detach' });
+  win.webContents.openDevTools({ mode: 'attach' });
 
 }
 

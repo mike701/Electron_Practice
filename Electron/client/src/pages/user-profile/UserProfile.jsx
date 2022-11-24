@@ -1,10 +1,10 @@
 import ProfileDataDisplay from "../../components/user-profile-components/ProfileDataDisplay";
 
 export default function UserProfile(props) {
-  const { setPageIndentifier, profileData } = props;
+  const { setPageIdentifier, profileData } = props;
 
   const returnToMainPage = () => {
-    setPageIndentifier(1);
+    setPageIdentifier(1);
   };
   return (
     <>
