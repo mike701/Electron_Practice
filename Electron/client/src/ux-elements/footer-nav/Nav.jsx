@@ -1,10 +1,11 @@
+import './Nav.css';
 export default function Nav(props) {
-    const {setPageIndentifier} = props
+    const {setPageIdentifier} = props
     return (
-        <>
-        <button onClick={() => {setPageIndentifier(1)}}>go to home page</button>
-        <button onClick={() => {setPageIndentifier(2)}}>Go to profile</button>
-        <button onClick={() => {setPageIndentifier(3)}}>Go to settings</button>
-        </>
+        <div id="navBar">
+        <button onClick={() => {setPageIdentifier(1)}}>go to home page</button>
+        <button onClick={() => {setPageIdentifier(2)}}>Go to profile</button>
+        <button onClick={() => {setPageIdentifier(3)}}>Go to settings</button>
+        </div>
     )
 }
