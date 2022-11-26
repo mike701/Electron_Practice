@@ -1,8 +1,5 @@
-import React from "react";
-export default function DefaultPage(props) {
-  return (
-    <>
-      <h1>Homepage for the app</h1>
-    </>
-  );
+const DefaultPage = (): JSX.Element => {
+    return <div>Hi default</div>
 }
+
+export default DefaultPage

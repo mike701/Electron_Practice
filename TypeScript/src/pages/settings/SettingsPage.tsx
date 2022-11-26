@@ -1,33 +1,31 @@
-import React from "react"
-export default function SettingsPage(props) {
-  const { setMockProfile } = props;
+import React from "react";
+export default function SettingsPage() {
+  // const mockProfileDataToChange = {
+  //   user: "Mikey",
+  //   name: "Mike",
+  //   age: 2,
+  //   description: "desc",
+  //   hobbies: ["hobbies", "Running", "Reading"],
+  // };
 
-  const mockProfileDataToChange = {
-    user: "Mikey",
-    name: "Mike",
-    age: 2,
-    description: "desc",
-    hobbies: ["hobbies", "Running", "Reading"],
-  };
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+  //   setMockProfile(mockProfileDataToChange);
+  // };
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    setMockProfile(mockProfileDataToChange);
-  };
-
-  const setValuesToBeChanged = (event) => {
-    mockProfileDataToChange[`${event.target.id}`] = event.target.value;
-  };
+  // const setValuesToBeChanged = (event) => {
+  //   mockProfileDataToChange[`${event.target.id}`] = event.target.value;
+  // };
 
   return (
     <>
       <div>Settings</div>
-      <form onSubmit={submitForm}>
+      <form>
         <label>Set user</label>
-        <input type="text" id="user" onChange={setValuesToBeChanged} />
+        <input type="text" id="user" />
         <br />
         <label>Set Name</label>
-        <input onChange={setValuesToBeChanged} type="text" id="name" />
+        <input type="text" id="name" />
         <br />
         <button>save settings</button>
       </form>
