@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { initializePage } from "./services/pageInitService";
