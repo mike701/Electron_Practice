@@ -1,3 +1,4 @@
+import React from "react";
 import MainPage from "../../pages/main-page/MainPage";
 import Footer from "../footer-nav/footer";
 import Nav from "../footer-nav/nav";
