@@ -1,11 +1,25 @@
+import FeedPage from "../feed-page/FeedPage";
+import FourOFour from "../error-message/FourOFour";
+import InvalidValidIndentifierPage from "../error-message/InvalidValidIdentifierPage";
+import SettingsPage from "../settings/SettingsPage";
+import UserProfile from "../user-profile/UserProfile";
+import DefaultPage from "../default-page/DefaultPage";
 const MainPage = (): JSX.Element => {
   const pageRoute: number = localStorage.get("pageId").Number();
+
   switch (pageRoute) {
+    case 0:
+      return <FourOFour />;
     case 1:
-      return <div>1</div>;
+      return <DefaultPage />;
+    case 2:
+      return <UserProfile />;
+    case 3:
+      return <SettingsPage />;
+    case 4:
+      return <FeedPage />;
     default:
-      return <div>Your dev is a dumbass</div>;
+      return <InvalidValidIndentifierPage />;
   }
 };
-
 export default MainPage;
