@@ -1,14 +1,18 @@
 // eslint-disable-next-line import/no-unresolved
-import React from "react";
+import React,{ useContext } from "react";
 import "./Nav.css";
 import usePageIdentity from "../../hooks/usePageIndentity";
 import { initializePage } from "../../services/pageInitService";
 import { PageIdentity } from "../../models/pageIdentiy.model";
+import { pageContext } from "../../App";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Nav({refresh}: any) {
+export default function Nav({ refresh }: any) {
+  const page = useContext(pageContext);
+  console.log("Nav PageContext: ", page);
+  
   const { setPageIdentifier } = usePageIdentity();
-  // const { refresh } = props;
+
   const changePageId = (id: PageIdentity) => {
     initializePage(id, setPageIdentifier);
     refresh((prev: boolean) => !prev);
@@ -18,6 +22,7 @@ export default function Nav({refresh}: any) {
     <div id="navBar">
       <button
         onClick={() => {
+          page.pageNumber = 1;
           changePageId({ pageRoute: 1 });
         }}
       >
@@ -25,6 +30,7 @@ export default function Nav({refresh}: any) {
       </button>
       <button
         onClick={() => {
+          page.pageNumber = 2;
           changePageId({ pageRoute: 2 });
         }}
       >
@@ -32,6 +38,7 @@ export default function Nav({refresh}: any) {
       </button>
       <button
         onClick={() => {
+          page.pageNumber = 3;
           changePageId({ pageRoute: 3 });
         }}
       >
