@@ -1,3 +1,8 @@
 export interface PageIdentity {
-    pageRoute: number
+  pageRoute?: number,
+  pageIdentifier?: number,
+  setPageIdentifier?: any,
+  profileData?: string,
+  mockProfile?: any,
+  setMockProfile?: any
 }
