@@ -1,20 +1,16 @@
-import React from "react";
 import MainPage from "../../pages/main-page/MainPage";
 import Footer from "../footer-nav/footer";
 import Nav from "../footer-nav/nav";
-import "./Layout.css"
+import "./Layout.css";
 
-export default function Layout(props) {
-  
+const Layout = (props: any): JSX.Element => {
+  const {setRefreshPage} = props
   return (
-      <div id='main'>
-        <Nav setPageIdentifier={props.setPageIdentifier} />
-      <MainPage
-      pageIdentifier={props.pageIdentifier}
-      profileData={props.profileData}
-      setMockProfile={props.setMockProfile}
-      />
-        <Footer />
-      </div>
+    <div id="main">
+      <Nav refresh={setRefreshPage}/>
+      <MainPage />
+      <Footer />
+    </div>
   );
 }
+export default Layout

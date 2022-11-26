@@ -1,20 +1,25 @@
 import { Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initializePage } from "./services/pageInitService";
-import MainPage from "./pages/main-page/MainPage";
-import { PageIdentity } from "./models/pageIdentiy.model";
+import usePageIdentity from "./hooks/usePageIndentity";
+import Layout from "./ux-elements/Layout/Layout";
 
 function App() {
-  const [pageIdentifier, setPageIdentifier] = useState<PageIdentity>(undefined);
-  console.log(`The current page ID is ${pageIdentifier}`);
+  const { setPageIdentifier } = usePageIdentity();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [refreshPage, setRefreshPage] = useState<boolean>(false)
+  console.log(`The current page ID is ${localStorage.getItem('pageId')}`);
 
   useEffect(() => {
-    initializePage({ pageRoute: 1 }, setPageIdentifier);
+    initializePage(
+      { pageRoute: parseInt(localStorage.getItem("pageId")) },
+      setPageIdentifier
+    );
   }, []);
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/main_window" element={<Layout setRefreshPage={setRefreshPage} />} />
       </Routes>
     </div>
   );
