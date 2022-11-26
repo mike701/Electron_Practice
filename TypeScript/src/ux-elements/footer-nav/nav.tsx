@@ -7,7 +7,6 @@ import { PageIdentity } from "../../models/pageIdentiy.model";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Nav({refresh}: any) {
   const { setPageIdentifier } = usePageIdentity();
-  // const { refresh } = props;
   const changePageId = (id: PageIdentity) => {
     initializePage(id, setPageIdentifier);
     refresh((prev: boolean) => !prev);

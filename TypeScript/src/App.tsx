@@ -16,6 +16,7 @@ function App() {
       setPageIdentifier
     );
   }, []);
+  
   return (
     <div className="App">
       <Routes>
