@@ -1,3 +1,4 @@
+import React from "react"
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { initializePage } from "./services/pageInitService";
@@ -12,7 +13,7 @@ function App() {
 
   useEffect(() => {
     initializePage(
-      { pageRoute: parseInt(localStorage.getItem("pageId")) },
+      { pageRoute: parseInt(localStorage?.getItem("pageId")) },
       setPageIdentifier
     );
   }, []);

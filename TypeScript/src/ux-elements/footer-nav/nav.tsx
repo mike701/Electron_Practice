@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
+import React from "react";
 import "./Nav.css";
 import usePageIdentity from "../../hooks/usePageIndentity";
 import { initializePage } from "../../services/pageInitService";
