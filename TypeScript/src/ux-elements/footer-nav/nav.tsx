@@ -4,9 +4,10 @@ import usePageIdentity from "../../hooks/usePageIndentity";
 import { initializePage } from "../../services/pageInitService";
 import { PageIdentity } from "../../models/pageIdentiy.model";
 
-export default function Nav(props: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function Nav({refresh}: any) {
   const { setPageIdentifier } = usePageIdentity();
-  const { refresh } = props;
+  // const { refresh } = props;
   const changePageId = (id: PageIdentity) => {
     initializePage(id, setPageIdentifier);
     refresh((prev: boolean) => !prev);

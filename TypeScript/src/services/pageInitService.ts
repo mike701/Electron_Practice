@@ -1,10 +1,10 @@
-import { Dispatch } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { PageIdentity } from "../models/pageIdentiy.model";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const initializePage = (
   page: PageIdentity,
-  setState: Dispatch<PageIdentity>
+  setState: Dispatch<SetStateAction<PageIdentity>>
 ) => {
   if (
     page?.pageRoute === 0 ||
