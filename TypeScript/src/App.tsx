@@ -1,39 +1,49 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, {
+  useState,
+  useMemo,
+  createContext,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Route, Routes } from "react-router-dom";
-import { initializePage } from "./services/pageInitService";
-import usePageIdentity from "./hooks/usePageIndentity";
-import Layout from "./ux-elements/Layout/Layout";
 import { pageContextInterface } from "./models/contextModels.model";
+import Layout from "./ux-elements/Layout/Layout";
 
-export const pageContext = createContext<pageContextInterface>({
-  pageNumber: 1,
-});
+export const pageContext = createContext<pageContextInterface | null>(null);
 
-function App() {
-  const { setPageIdentifier } = usePageIdentity();
-  const [pageNum, setPageNum] = useState<number>(1);
+function createPageContext(
+  pageNum: number,
+  setPageNum: Dispatch<SetStateAction<number>>
+) {
+  if (localStorage.getItem("pageId")) {
+    setPageNum(+localStorage.getItem("pageId"));
+  } else {
+    setPageNum(1);
+    localStorage.setItem("pageId", "1");
+  }
 
-  console.log(`The current page ID is ${localStorage.getItem("pageId")}`);
-
-  useEffect(() => {
-    initializePage(
-      { pageRoute: parseInt(localStorage.getItem("pageId")) },
-      setPageIdentifier
-    );
-  }, []);
-
-  const pageContextType: pageContextInterface = {
-    pageNumber: pageNum,
+  const samplePageContext: pageContextInterface = {
+    pageNumber: 1,
     setPageNumber: setPageNum,
   };
 
+  return samplePageContext;
+}
+
+function App() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [pageNum, setPageNum] = useState<number | null | undefined>();
+  const samplePageContext: pageContextInterface = useMemo(
+    () => createPageContext(pageNum, setPageNum),
+    [pageNum]
+  );
   return (
     <div className="App">
       <Routes>
         <Route
           path="/main_window"
           element={
-            <pageContext.Provider value={pageContextType}>
+            <pageContext.Provider value={samplePageContext}>
               <Layout />
             </pageContext.Provider>
           }
