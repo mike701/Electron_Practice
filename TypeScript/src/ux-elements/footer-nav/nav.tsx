@@ -1,45 +1,37 @@
 // eslint-disable-next-line import/no-unresolved
 import React,{ useContext } from "react";
 import "./Nav.css";
-import usePageIdentity from "../../hooks/usePageIndentity";
-import { initializePage } from "../../services/pageInitService";
-import { PageIdentity } from "../../models/pageIdentiy.model";
 import { pageContext } from "../../App";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Nav({ refresh }: any) {
+export default function Nav() {
   const page = useContext(pageContext);
-  console.log("Nav PageContext: ", page);
-  
-  const { setPageIdentifier } = usePageIdentity();
-
-  const changePageId = (id: PageIdentity) => {
-    initializePage(id, setPageIdentifier);
-    refresh((prev: boolean) => !prev);
-  };
 
   return (
     <div id="navBar">
       <button
-        onClick={() => {
-          page.pageNumber = 1;
-          changePageId({ pageRoute: 1 });
+        onClick={async () => {
+          page.setPageNumber(1) 
+          localStorage.setItem('pageId', '1');
+          // changePageId({ pageRoute: page.pageNumber });
         }}
       >
         go to home page
       </button>
       <button
-        onClick={() => {
-          page.pageNumber = 2;
-          changePageId({ pageRoute: 2 });
+        onClick={async () => {
+          page?.setPageNumber(2);
+          await localStorage.setItem('pageId', '2');
+          // changePageId({ pageRoute: page.pageNumber });
         }}
       >
         Go to profile
       </button>
       <button
         onClick={() => {
-          page.pageNumber = 3;
-          changePageId({ pageRoute: 3 });
+          page?.setPageNumber(3);
+          localStorage.setItem('pageId', '3');
+          // changePageId({ pageRoute: page.pageNumber });
         }}
       >
         Go to settings
