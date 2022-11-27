@@ -15,11 +15,9 @@ function createPageContext(
   pageNum: number,
   setPageNum: Dispatch<SetStateAction<number>>
 ) {
-  if (localStorage.getItem("pageId")) {
-    setPageNum(+localStorage.getItem("pageId"));
-  } else {
-    setPageNum(1);
-    localStorage.setItem("pageId", "1");
+  if (pageNum.toString() !== localStorage.getItem("pageId")) {
+    setPageNum(pageNum);
+    localStorage.setItem("pageId", pageNum.toString());
   }
 
   const samplePageContext: pageContextInterface = {
