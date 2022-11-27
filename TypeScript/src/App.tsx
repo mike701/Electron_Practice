@@ -1,46 +1,44 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, Dispatch, SetStateAction, createContext } from "react";
 import { initializePage } from "./services/pageInitService";
-import { createContext, useContext } from "react";
-import { Dispatch, SetStateAction } from "react";
 
-import { PageIdentity } from "./models/pageIdentiy.model";
-import usePageIdentity from "./hooks/usePageIndentity";
 import Layout from "./ux-elements/Layout/Layout";
+
 interface pageContextInterface {
   pageNumber: number,
-  setPageNumber?: Dispatch<SetStateAction<number>> | undefined
+  setPageNumber?: Dispatch<SetStateAction<number | null | undefined>> 
 }
 
-export const pageContext = createContext<pageContextInterface>({ pageNumber: 1 });
+export const pageContext = createContext<pageContextInterface | null>(null);
 
-function App() {
-  const { setPageIdentifier } = usePageIdentity();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [refreshPage, setRefreshPage] = useState<boolean>(false);
-  const [pageNum, setPageNum] = useState<number>(1);
-  console.log(`The current page ID is ${localStorage.getItem('pageId')}`);
+function createPageContext(pageNum, setPageNum) {
+  // const [pageNum, setPageNum] = useState<number | null | undefined>(1);
+  if (localStorage.getItem("pageId")) {
+    setPageNum(localStorage.getItem("pageId"));
+  } else {
+    setPageNum(1);
+    localStorage.setItem("pageId", '1');
+  }
 
+  let samplePageContext: pageContextInterface;
 
-  useEffect(() => {
-    initializePage(
-      { pageRoute: parseInt(localStorage.getItem("pageId")) },
-      setPageIdentifier
-    );
-  }, []);
-
-  const samplePageContext: pageContextInterface = {
+  return samplePageContext = {
     pageNumber: 1,
     setPageNumber: setPageNum
   };
+}
 
+function App() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [pageNum, setPageNum] = useState<number | null | undefined>();
+  const samplePageContext:pageContextInterface = useMemo(()=>createPageContext(pageNum, setPageNum), [pageNum]);
   return (
     <div className="App">
       <Routes>
         <Route path="/main_window" element={
           <pageContext.Provider value={samplePageContext}>
-            <Layout setRefreshPage={setRefreshPage} />
+            <Layout />
           </pageContext.Provider>
         }
         />
