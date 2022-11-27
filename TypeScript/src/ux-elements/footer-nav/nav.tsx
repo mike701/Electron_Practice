@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./nav.css";
 import { pageContext } from "../../App";
+import { initializePage } from "../../services/pageInitService";
 
 export default function Nav() {
   const page = useContext(pageContext);
@@ -9,24 +10,21 @@ export default function Nav() {
     <div id="navBar">
       <button
         onClick={async () => {
-          page?.setPageNumber(1);
-          localStorage.setItem("pageId", "1");
+          initializePage({ pageRoute: 1 }, page?.setPageNumber);
         }}
       >
         go to home page
       </button>
       <button
         onClick={async () => {
-          page?.setPageNumber(2);
-          localStorage.setItem("pageId", "2");
+          initializePage({ pageRoute: 2 }, page?.setPageNumber);
         }}
       >
         Go to profile
       </button>
       <button
         onClick={() => {
-          page?.setPageNumber(3);
-          localStorage.setItem("pageId", "3");
+          initializePage({ pageRoute: 3 }, page?.setPageNumber);
         }}
       >
         Go to settings
