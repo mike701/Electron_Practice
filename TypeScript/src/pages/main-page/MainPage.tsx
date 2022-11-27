@@ -5,7 +5,8 @@ import InvalidValidIndentifierPage from "../error-message/InvalidValidIdentifier
 import SettingsPage from "../settings/SettingsPage";
 import UserProfile from "../user-profile/UserProfile";
 import DefaultPage from "../default-page/DefaultPage";
-export default function MainPage(): JSX.Element {
+
+function MainPage() {
   const pageRoute: number = +localStorage.getItem("pageId");
 
   switch (pageRoute) {
@@ -23,3 +24,5 @@ export default function MainPage(): JSX.Element {
       return <InvalidValidIndentifierPage />;
   }
 }
+
+export { MainPage };
