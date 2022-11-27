@@ -6,11 +6,12 @@ import { initializePage } from "../../services/pageInitService";
 import { PageIdentity } from "../../models/pageIdentiy.model";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Nav({refresh}: any) {
+export default function Nav({ setRefresh }: any) {
   const { setPageIdentifier } = usePageIdentity();
+
   const changePageId = (id: PageIdentity) => {
     initializePage(id, setPageIdentifier);
-    refresh((prev: boolean) => !prev);
+    setRefresh((prev: boolean) => !prev);
   };
 
   return (

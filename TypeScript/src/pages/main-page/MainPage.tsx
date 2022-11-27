@@ -5,13 +5,9 @@ import InvalidValidIndentifierPage from "../error-message/InvalidValidIdentifier
 import SettingsPage from "../settings/SettingsPage";
 import UserProfile from "../user-profile/UserProfile";
 import DefaultPage from "../default-page/DefaultPage";
-import { useEffect } from "react";
 
-export default function MainPage(): JSX.Element {
+function MainPage() {
   const pageRoute: number = +localStorage.getItem("pageId");
-  useEffect(() => {
-    console.log("running");
-  }, [pageRoute]);
 
   switch (pageRoute) {
     case 0:
@@ -28,3 +24,5 @@ export default function MainPage(): JSX.Element {
       return <InvalidValidIndentifierPage />;
   }
 }
+
+export { MainPage };
