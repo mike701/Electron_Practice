@@ -6,22 +6,20 @@ import { initializePage } from "../../services/pageInitService";
 import { PageIdentity } from "../../models/pageIdentiy.model";
 import { pageContext } from "../../App";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Nav() {
   const page = useContext(pageContext);
-  console.log("Nav PageContext: ", page);
 
   const { setPageIdentifier } = usePageIdentity();
 
   const changePageId = (id: PageIdentity) => {
     initializePage(id, setPageIdentifier);
+    page.setPageNumber(id.pageRoute);
   };
 
   return (
     <div id="navBar">
       <button
         onClick={() => {
-          page.pageNumber = 1;
           changePageId({ pageRoute: 1 });
         }}
       >
@@ -29,7 +27,6 @@ export default function Nav() {
       </button>
       <button
         onClick={() => {
-          page.pageNumber = 2;
           changePageId({ pageRoute: 2 });
         }}
       >
@@ -37,7 +34,6 @@ export default function Nav() {
       </button>
       <button
         onClick={() => {
-          page.pageNumber = 3;
           changePageId({ pageRoute: 3 });
         }}
       >
