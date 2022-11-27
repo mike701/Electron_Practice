@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import React, { useContext } from "react";
-import "./Nav.css";
+import "./nav.css";
 import usePageIdentity from "../../hooks/usePageIndentity";
 import { initializePage } from "../../services/pageInitService";
 import { PageIdentity } from "../../models/pageIdentiy.model";
