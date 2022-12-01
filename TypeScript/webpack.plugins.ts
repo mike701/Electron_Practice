@@ -3,7 +3,9 @@ import type IForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ForkTsCheckerWebpackPlugin: typeof IForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 var webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 export const plugins = [
   new ForkTsCheckerWebpackPlugin({
@@ -14,5 +16,8 @@ export const plugins = [
     maxSize: 50000,
     chunkOverhead: 0,
     entryChunkMultiplicator: 1,
+  }),
+  new MiniCssExtractPlugin({
+    filename: "[name].[contenthash].css"
   }),
 ];

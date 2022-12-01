@@ -1,4 +1,5 @@
 import type { ModuleOptions } from 'webpack';
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 export const rules: Required<ModuleOptions>['rules'] = [
   // Add support for native node modules
@@ -27,5 +28,15 @@ export const rules: Required<ModuleOptions>['rules'] = [
         transpileOnly: true,
       },
     },
+  },
+  {
+    test: /\.css$/i,
+    exclude: /(node_modules|\.webpack)/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      "style-loader",
+      "css-loader",
+      // 'postcss-loader',
+    ],
   },
 ];
