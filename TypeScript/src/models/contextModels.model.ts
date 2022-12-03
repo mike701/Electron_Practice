@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
+import { PageIdentityEnum } from "../constants/PageIdentityEnum";
 
 export interface pageContextInterface {
-    pageNumber: number;
-    setPageNumber?: Dispatch<SetStateAction<number>> | undefined;
+    pageIdentity: PageIdentityEnum;
+    setPageIdentity?: Dispatch<SetStateAction<PageIdentityEnum>> | undefined;
   }
   

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./nav.css";
 import { pageContext } from "../../App";
 import { initializePage } from "../../services/pageInitService";
+import { PageIdentityEnum } from "../../constants/PageIdentityEnum";
 
 export default function Nav() {
   const page = useContext(pageContext);
@@ -10,21 +11,30 @@ export default function Nav() {
     <div id="navBar">
       <button
         onClick={async () => {
-          initializePage({ pageRoute: 1 }, page?.setPageNumber);
+          initializePage(
+            { pageRoute: PageIdentityEnum.DEFAULT_PAGE },
+            page?.setPageIdentity
+          );
         }}
       >
         go to home page
       </button>
       <button
         onClick={async () => {
-          initializePage({ pageRoute: 2 }, page?.setPageNumber);
+          initializePage(
+            { pageRoute: PageIdentityEnum.PROFILE_PAGE },
+            page?.setPageIdentity
+          );
         }}
       >
         Go to profile
       </button>
       <button
         onClick={() => {
-          initializePage({ pageRoute: 3 }, page?.setPageNumber);
+          initializePage(
+            { pageRoute: PageIdentityEnum.SETTINGS_PAGE },
+            page?.setPageIdentity
+          );
         }}
       >
         Go to settings

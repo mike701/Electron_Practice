@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import ProfileDataDisplay from "../../components/user-profile-components/ProfileDataDisplay";
 import { pageContext } from "../../App";
 import { initializePage } from "../../services/pageInitService";
+import { PageIdentityEnum } from "../../constants/PageIdentityEnum";
 
 export default function UserProfile() {
   const page = useContext(pageContext);
@@ -12,7 +13,10 @@ export default function UserProfile() {
       <ProfileDataDisplay />
       <button
         onClick={() => {
-          initializePage({pageRoute: 1}, page?.setPageNumber)
+          initializePage(
+            { pageRoute: PageIdentityEnum.DEFAULT_PAGE },
+            page?.setPageIdentity
+          );
         }}
       >
         click to change page :D

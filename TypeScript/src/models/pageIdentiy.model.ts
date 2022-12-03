@@ -1,3 +1,5 @@
+import { PageIdentityEnum } from "../constants/PageIdentityEnum";
+
 export interface PageIdentity {
-    pageRoute: number
+    pageRoute: PageIdentityEnum
 }
