@@ -3,5 +3,5 @@ export enum PageIdentityEnum {
   DEFAULT_PAGE = "default_page",
   PROFILE_PAGE = "profile_page",
   SETTINGS_PAGE = "settings_page",
-  FEED_PAGE = "feed_page"
+  FEED_PAGE = "feed_page",
 }
