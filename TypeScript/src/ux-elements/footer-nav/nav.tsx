@@ -29,6 +29,13 @@ export default function Nav() {
       >
         Go to settings
       </button>
+      <button
+        onClick={() => {
+          initializePage({ pageRoute: 4 }, page?.setPageNumber);
+        }}
+      >
+        Feed
+      </button>
     </div>
   );
 }

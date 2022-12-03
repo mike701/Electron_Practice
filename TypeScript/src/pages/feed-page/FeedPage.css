@@ -1,0 +1,67 @@
+img{
+  border-radius: 20px;
+  position: absolute;
+  top: 20vh;
+}
+.visible{
+  opacity: 1;
+}
+.invisible{
+  opacity: 0;
+}
+.gg-sun_icon {
+  box-sizing: border-box;
+  position: relative;
+  left: 30%;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 24px;
+  height: 24px;
+  background:
+    linear-gradient(to bottom,
+        currentColor 4px,transparent 0)
+        no-repeat 5px -6px/2px 6px,
+    linear-gradient(to bottom,
+        currentColor 4px,transparent 0)
+        no-repeat 5px 14px/2px 6px,
+    linear-gradient(to bottom,
+        currentColor 4px,transparent 0)
+        no-repeat -8px 5px/6px 2px,
+    linear-gradient(to bottom,
+        currentColor 4px,transparent 0)
+        no-repeat 14px 5px/6px 2px;
+  border-radius: 100px;
+  box-shadow: inset 0 0 0 2px;
+  border: 6px solid transparent
+}
+.gg-sun{
+  background-position: center;
+  transition: background 0.8s;
+}
+.gg-sun:hover {
+    background: yellow radial-gradient(circle, transparent 1%, orange 1%) center/150000%;
+}
+.gg-sun:active{
+  background-color: #6eb9f7;
+  background-size: 100%;
+  transition: background 0s;
+}
+.gg-sun_icon::after,
+.gg-sun_icon::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  border-right: 4px solid;
+  border-left: 4px solid;
+  left: -6px;
+  top: 5px
+}
+.gg-sun_icon::before {
+  transform: rotate(-45deg)
+}
+.gg-sun_icon::after {
+  transform: rotate(45deg)
+}

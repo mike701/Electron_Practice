@@ -30,7 +30,7 @@ function createPageContext(
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [pageNum, setPageNum] = useState<number | null | undefined>();
+  const [pageNum, setPageNum] = useState<number>(+(localStorage.getItem("pageId")));
   const samplePageContext: pageContextInterface = useMemo(
     () => createPageContext(pageNum, setPageNum),
     [pageNum]
