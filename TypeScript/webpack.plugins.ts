@@ -12,10 +12,10 @@ export const plugins = [
     logger: 'webpack-infrastructure',
   }),
   new webpack.optimize.AggressiveSplittingPlugin({
-    minSize: 40000,
-    maxSize: 100000,
-    chunkOverhead: 0,
-    entryChunkMultiplicator: 1,
+    minSize: 35000,
+    maxSize: 60000,
+    chunkOverhead: 3,
+    entryChunkMultiplicator: 3,
   }),
   new MiniCssExtractPlugin({
     filename: "[name].[contenthash].css"
