@@ -13,7 +13,7 @@ export const plugins = [
   }),
   new webpack.optimize.AggressiveSplittingPlugin({
     minSize: 40000,
-    maxSize: 50000,
+    maxSize: 100000,
     chunkOverhead: 0,
     entryChunkMultiplicator: 1,
   }),

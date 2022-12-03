@@ -29,14 +29,14 @@ export const rules: Required<ModuleOptions>['rules'] = [
       },
     },
   },
-  {
-    test: /\.css$/i,
-    exclude: /(node_modules|\.webpack)/,
-    use: [
-      MiniCssExtractPlugin.loader,
-      "style-loader",
-      "css-loader",
-      // 'postcss-loader',
-    ],
-  },
+  // {
+  //   test: /\.css$/i,
+  //   exclude: /(node_modules|\.webpack)/,
+  //   use: [
+  //     MiniCssExtractPlugin.loader,
+  //     "style-loader",
+  //     "css-loader",
+  //     // 'postcss-loader',
+  //   ],
+  // },
 ];
