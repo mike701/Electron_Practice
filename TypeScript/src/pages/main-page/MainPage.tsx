@@ -5,20 +5,24 @@ import InvalidValidIndentifierPage from "../error-message/InvalidValidIdentifier
 import SettingsPage from "../settings/SettingsPage";
 import UserProfile from "../user-profile/UserProfile";
 import DefaultPage from "../default-page/DefaultPage";
+import { PageIdentityEnum } from "../../constants/PageIdentityEnum";
 
 function MainPage() {
-  const pageRoute: number = +localStorage.getItem("pageId");
+  const pageRoute: PageIdentityEnum = localStorage.getItem(
+    "pageId"
+    // going to keep the casting here for now. Moving forward we should find a solution to move away from local storage to get rid of this casting.
+  ) as PageIdentityEnum;
 
   switch (pageRoute) {
-    case 0:
+    case "four_o_four":
       return <FourOFour />;
-    case 1:
+    case "default_page":
       return <DefaultPage />;
-    case 2:
+    case "profile_page":
       return <UserProfile />;
-    case 3:
+    case "settings_page":
       return <SettingsPage />;
-    case 4:
+    case "feed_page":
       return <FeedPage />;
     default:
       return <InvalidValidIndentifierPage />;

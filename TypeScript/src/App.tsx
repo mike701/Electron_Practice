@@ -6,42 +6,46 @@ import React, {
   SetStateAction,
 } from "react";
 import { Route, Routes } from "react-router-dom";
+import { PageIdentityEnum } from "./constants/PageIdentityEnum";
 import { pageContextInterface } from "./models/contextModels.model";
 import Layout from "./ux-elements/Layout/Layout";
 
-export const pageContext = createContext<pageContextInterface | null>(null);
+export const pageContext = createContext<pageContextInterface>({
+  pageIdentity: PageIdentityEnum.DEFAULT_PAGE,
+});
 
 function createPageContext(
-  pageNum: number,
-  setPageNum: Dispatch<SetStateAction<number>>
+  pageIdentity: PageIdentityEnum,
+  setPageIdentity: Dispatch<SetStateAction<PageIdentityEnum>>
 ) {
-  if (pageNum.toString() !== localStorage.getItem("pageId")) {
-    setPageNum(pageNum);
-    localStorage.setItem("pageId", pageNum.toString());
+  if (pageIdentity !== localStorage.getItem("pageId")) {
+    setPageIdentity(pageIdentity);
+    localStorage.setItem("pageId", pageIdentity);
   }
 
-  const samplePageContext: pageContextInterface = {
-    pageNumber: 1,
-    setPageNumber: setPageNum,
+  const initialPageContext: pageContextInterface = {
+    pageIdentity: PageIdentityEnum.DEFAULT_PAGE,
+    setPageIdentity: setPageIdentity,
   };
 
-  return samplePageContext;
+  return initialPageContext;
 }
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [pageNum, setPageNum] = useState<number>(+(localStorage.getItem("pageId")));
-  const samplePageContext: pageContextInterface = useMemo(
-    () => createPageContext(pageNum, setPageNum),
-    [pageNum]
+  const [pageIdentity, setPageIdentity] = useState<PageIdentityEnum>(PageIdentityEnum.DEFAULT_PAGE);
+  const initialPageContext: pageContextInterface = useMemo(
+    () => createPageContext(pageIdentity, setPageIdentity),
+    [pageIdentity]
   );
+
   return (
     <div className="App">
       <Routes>
         <Route
           path="/main_window"
           element={
-            <pageContext.Provider value={samplePageContext}>
+            <pageContext.Provider value={initialPageContext}>
               <Layout />
             </pageContext.Provider>
           }
