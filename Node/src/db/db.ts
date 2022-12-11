@@ -12,7 +12,7 @@
 //   }
 // }
 
-import { exec,spawn } from "child_process";
+import { exec } from "child_process";
 
 export default function scriptForDB() {
   try {
@@ -22,7 +22,7 @@ export default function scriptForDB() {
         return;
       }
       if (stderr) {
-        console.error("error creating db and populating with data", stderr);
+        console.error("stderror creating db and populating with data", stderr);
         return;
       }
       console.log(stdout);
