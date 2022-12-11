@@ -1,13 +1,7 @@
 import React, { useState} from "react";
 import "./FeedPage.css"
 export default function FeedPage() {
-  // const mockProfileDataToChange = {
-  //   user: "Mikey",
-  //   name: "Mike",
-  //   age: 2,
-  //   description: "desc",
-  //   hobbies: ["hobbies", "Running", "Reading"],
-  // };
+
   const [visible, setVisible] = useState(true);
   return (
     <><div>
