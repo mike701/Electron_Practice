@@ -16,16 +16,33 @@ import { exec } from "child_process";
 
 export default function scriptForDB() {
   try {
-    exec('psql -d library -f ./src/db/db.sql', (err, stderr, stdout) => { 
+    exec('psql -d social -f ./src/db/db.sql', (err,stdout) => { 
       if (err) {
         console.error("error creating db and populating with data", err);
         return;
       }
-      if (stderr) {
-        console.error("stderror creating db and populating with data", stderr);
-        return;
-      }
-      console.log(stdout);
+
+      exec('psql -d social -f ./src/db/seed.sql', (err, stdout) => {
+        if (err) {
+          console.error("error creating db", err);
+          return;
+        }
+        
+        exec('psql -d social -c "SELECT * FROM users"', (err, stdout) => {
+          if (err) {
+            console.error("error creating db and populating with users data", err);
+            return;
+          }
+          console.log(stdout);
+          exec('psql -d social -c "SELECT * FROM posts"', (err, stdout) => {
+            if (err) {
+              console.error("error creating db and populating with posts data", err);
+              return;
+            }
+          console.log(stdout);
+          });
+        });
+      });
     });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
