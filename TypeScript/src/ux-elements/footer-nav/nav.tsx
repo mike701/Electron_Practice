@@ -13,7 +13,7 @@ export default function Nav() {
         onClick={async () => {
           initializePage(
             { pageRoute: PageIdentityEnum.DEFAULT_PAGE },
-            page?.setPageIdentity
+            page.setPageIdentity
           );
         }}
       >
@@ -41,7 +41,10 @@ export default function Nav() {
       </button>
       <button
         onClick={() => {
-          initializePage({ pageRoute: 4 }, page?.setPageNumber);
+          initializePage(
+            { pageRoute: PageIdentityEnum.FEED_PAGE },
+            page?.setPageIdentity
+          );
         }}
       >
         Feed
