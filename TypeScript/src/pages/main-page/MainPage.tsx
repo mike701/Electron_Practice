@@ -6,14 +6,13 @@ import SettingsPage from "../settings/SettingsPage";
 import UserProfile from "../user-profile/UserProfile";
 import DefaultPage from "../default-page/DefaultPage";
 import { PageIdentityEnum } from "../../constants/PageIdentityEnum";
+import { z } from "zod";
 
 function MainPage() {
-  const pageRoute: PageIdentityEnum = localStorage.getItem(
-    "pageId"
-    // going to keep the casting here for now. Moving forward we should find a solution to move away from local storage to get rid of this casting.
-  ) as PageIdentityEnum;
+  const PageIdentityEnumType = z.nativeEnum(PageIdentityEnum);
+  type PageIdentityEnumType = z.infer<typeof PageIdentityEnumType>;
 
-  switch (pageRoute) {
+  switch (PageIdentityEnumType.parse(localStorage.getItem("pageId"))) {
     case "four_o_four":
       return <FourOFour />;
     case "default_page":

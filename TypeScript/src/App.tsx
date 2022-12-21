@@ -12,6 +12,8 @@ import Layout from "./ux-elements/Layout/Layout";
 
 export const pageContext = createContext<pageContextInterface>({
   pageIdentity: PageIdentityEnum.DEFAULT_PAGE,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setPageIdentity: () => {},
 });
 
 function createPageContext(
@@ -33,7 +35,9 @@ function createPageContext(
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [pageIdentity, setPageIdentity] = useState<PageIdentityEnum>(PageIdentityEnum.DEFAULT_PAGE);
+  const [pageIdentity, setPageIdentity] = useState<PageIdentityEnum>(
+    PageIdentityEnum.DEFAULT_PAGE
+  );
   const initialPageContext: pageContextInterface = useMemo(
     () => createPageContext(pageIdentity, setPageIdentity),
     [pageIdentity]

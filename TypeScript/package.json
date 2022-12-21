@@ -52,6 +52,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "react-router-dom": "^6.4.3",
     "rxjs": "^7.5.7",
-    "webpack": "^5.75.0"
+    "webpack": "^5.75.0",
+    "zod": "^3.20.2"
   }
 }
