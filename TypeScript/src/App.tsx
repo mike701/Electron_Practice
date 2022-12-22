@@ -4,10 +4,12 @@ import React, {
   createContext,
   Dispatch,
   SetStateAction,
+  useEffect
 } from "react";
 import { Route, Routes } from "react-router-dom";
 import { PageIdentityEnum } from "./constants/PageIdentityEnum";
 import { pageContextInterface } from "./models/contextModels.model";
+import { api } from "./config/axios-config";
 import Layout from "./ux-elements/Layout/Layout";
 
 export const pageContext = createContext<pageContextInterface>({
@@ -34,7 +36,16 @@ function createPageContext(
 }
 
 function App() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+  useEffect(() => {
+    console.log("useEffect")
+    const getData = async () => {
+      const res = await api.get("users/")
+      console.log(res.data)
+    }
+    getData()
+  }, [])
+
   const [pageIdentity, setPageIdentity] = useState<PageIdentityEnum>(
     PageIdentityEnum.DEFAULT_PAGE
   );
