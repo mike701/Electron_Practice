@@ -1,14 +1,15 @@
 
+from django.views import generic
 from django.http import JsonResponse, HttpResponse
 from django.core import serializers
 
 from .models import User, TestPosts
 
 
-def index(request):
-    user1 = {"name": "Mike", "age": 21}
-    user2 = {"name": "Immanuel", "age": 21}
-    return JsonResponse({"data": [user1, user2]})
+class IndexView(generic.ListView):
+    template_name = 'socialmedia/index.html'
+    def get_queryset(self):
+        print("queryset") 
 
 def get_users(request):
     users = User.objects.all()
