@@ -29,4 +29,11 @@
 import './index.css';
 
 console.log('👋 This message is being logged by "renderer.ts", included via webpack');
+console.log(window);
+const func = async () => {
+  const response = await window['commands'].ping();
+  console.log(response);
+}
+
+func()
 import './index.tsx';

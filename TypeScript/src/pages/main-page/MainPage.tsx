@@ -21,7 +21,7 @@ function MainPage() {
       return <UserProfile />;
     case "settings_page":
       return <SettingsPage />;
-    case "feed_page":
+    case "feed_page" || 4:
       return <FeedPage />;
     default:
       return <InvalidValidIndentifierPage />;

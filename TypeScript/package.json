@@ -1,8 +1,8 @@
 {
-  "name": "my-new-app",
-  "productName": "my-new-app",
+  "name": "practice",
+  "productName": "BrighterSide",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "BrighterSide Social App",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -12,8 +12,8 @@
     "lint": "eslint --ext .ts,.tsx ."
   },
   "keywords": [],
-  "author": {
-    "name": "Michael",
+  "authors": {
+    "names": "Michael Abebe, Immanuel Currah",
     "email": "michaelnabebe@gmail.com"
   },
   "license": "MIT",
@@ -49,6 +49,8 @@
   },
   "dependencies": {
     "@testing-library/react": "^13.4.0",
+    "axios": "^1.2.1",
+    "child_process": "^1.0.2",
     "electron-squirrel-startup": "^1.0.0",
     "react-router-dom": "^6.4.3",
     "rxjs": "^7.5.7",
